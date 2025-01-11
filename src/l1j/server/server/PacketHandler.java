@@ -149,7 +149,7 @@ import l1j.server.server.clientpackets.C_FishClick;
 import l1j.server.server.clientpackets.C_FixWeaponList;
 import l1j.server.server.clientpackets.C_GiveItem;
 import l1j.server.server.clientpackets.C_HireSoldier;
-import l1j.server.server.clientpackets.C_ItemUSe;
+import l1j.server.server.clientpackets.C_ItemUse;
 import l1j.server.server.clientpackets.C_JoinClan;
 import l1j.server.server.clientpackets.C_KeepALIVE;
 import l1j.server.server.clientpackets.C_LeaveClan;
@@ -484,7 +484,7 @@ public class PacketHandler {
 				break;
 
 			case C_OPCODE_USEITEM:
-				new C_ItemUSe(abyte0, _client);
+				new C_ItemUse(abyte0, _client);
 				break;
 
 			case C_OPCODE_CREATEPARTY:

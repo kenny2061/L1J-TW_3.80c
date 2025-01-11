@@ -123,13 +123,13 @@ import l1j.server.server.utils.Random;
 /**
  * TODO: 翻譯，太多了= = 處理收到由客戶端傳來使用道具的封包
  */
-public class C_ItemUSe extends ClientBasePacket {
+public class C_ItemUse extends ClientBasePacket {
 
-	private static final String C_ITEM_USE = "[C] C_ItemUSe";
+	private static final String C_ITEM_USE = "[C] C_ItemUse";
 
-	private static Logger _log = Logger.getLogger(C_ItemUSe.class.getName());
+	private static Logger _log = Logger.getLogger(C_ItemUse.class.getName());
 
-	public C_ItemUSe(byte abyte0[], ClientThread client) throws Exception {
+	public C_ItemUse(byte abyte0[], ClientThread client) throws Exception {
 		super(abyte0);
 		
 		L1PcInstance pc = client.getActiveChar();
