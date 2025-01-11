@@ -37,8 +37,12 @@ public class Shutdown extends Thread {
 	public static final int GM_SHUTDOWN = 1;
 	public static final int GM_RESTART = 2;
 	public static final int ABORT = 3;
-	private static String[] _modeText = { "SIGTERM", "shuting down",
-			"restarting", "aborting" };
+	private static String[] _modeText = 
+		{ "SIGTERM【經由『黑盒子』 關閉伺服器】", 
+		  "shuting down【『遊戲管理員』執行 關閉伺服器 動作】",
+		  "restarting【『遊戲管理員』執行 重啟伺服器 動作】",
+		  "aborting【中斷動作】"
+		};
 
 	/**
 	 * Default constucter is only used internal to create the shutdown-hook
@@ -285,8 +289,7 @@ public class Shutdown extends Thread {
 		// we cannt abort shutdown anymore, so i removed the "if"
 		GameServer.getInstance().disconnectAllCharacters();
 
-		System.err
-				.println("Data saved. All players disconnected, shutting down.");
+		System.err.println("Data saved. All players disconnected, shutting down.");
 		try {
 			int delay = 500;
 			Thread.sleep(delay);

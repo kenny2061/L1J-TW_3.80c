@@ -29,7 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l1j.server.Config;
-import l1j.server.server.Opcodes;
+//import l1j.server.server.Opcodes;
 import l1j.server.server.datatables.CharBuffTable;
 import l1j.server.server.model.L1DragonSlayer;
 import l1j.server.server.model.Getback;
