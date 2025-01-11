@@ -29,7 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l1j.server.Config;
-import l1j.server.server.Opcodes;
+// import l1j.server.server.Opcodes;
 import l1j.server.server.datatables.CharBuffTable;
 import l1j.server.server.model.L1DragonSlayer;
 import l1j.server.server.model.Getback;
@@ -110,10 +110,9 @@ public class ClientThread implements Runnable, PacketOutput {
 		return _hostname;
 	}
 
-	// TODO: 翻譯
-	// ClientThreadによる一定間隔自動セーブを制限する為のフラグ（true:制限 false:制限無し）
-	// 現在はC_LoginToServerが実行された際にfalseとなり、
-	// C_NewCharSelectが実行された際にtrueとなる
+	// 限制ClientThread以固定間隔自動儲存的標誌（true：限制 false：無限制）
+	// 目前，執行C_LoginToServer時為false，
+	// 執行 C_NewCharSelect 時變成 true
 	private boolean _charRestart = true;
 
 	public void CharReStart(boolean flag) {
@@ -187,12 +186,12 @@ public class ClientThread implements Runnable, PacketOutput {
 		
 
 		/*
-		 * TODO: 翻譯 クライアントからのパケットをある程度制限する。 理由：不正の誤検出が多発する恐れがあるため
-		 * ex1.サーバに過負荷が掛かっている場合、負荷が落ちたときにクライアントパケットを一気に処理し、結果的に不正扱いとなる。
-		 * ex2.サーバ側のネットワーク（下り）にラグがある場合、クライアントパケットが一気に流れ込み、結果的に不正扱いとなる。
-		 * ex3.クライアント側のネットワーク（上り）にラグがある場合、以下同様。
-		 * 
-		 * 無制限にする前に不正検出方法を見直す必要がある。
+		 * 在一定程度上限制來自客戶端的資料包。 原因：有頻繁誤檢詐欺的風險。
+		 * ex1. 如果伺服器過載，當負載下降時，它會立即處理所有客戶端資料包，從而導致錯誤處理。
+		 * ex2. 如果伺服器端網路（下游）出現延遲，客戶端資料包將同時流入，導致處理錯誤。
+		 * ex3. 若客戶端網路（上游）有延遲，則同樣適用。
+		 *
+		 * 在限制詐欺之前，需要檢視詐欺偵測方法。
 		 */
 		HcPacket movePacket = new HcPacket(M_CAPACITY);
 		HcPacket hcPacket = new HcPacket(H_CAPACITY);
@@ -285,16 +284,14 @@ public class ClientThread implements Runnable, PacketOutput {
 					// C_OPCODE_KEEPALIVE以外の何かしらのパケットを受け取ったらObserverへ通知
 					observer.packetReceived();
 				}
-				// TODO: 翻譯
-				// 如果目前角色為 null はキャラクター選択前なのでOpcodeの取捨選択はせず全て実行
+				// 如果目前角色為 null 在字元選擇之前，因此執行所有操作而不選擇操作碼。
 				if (_activeChar == null) {
 					_handler.handlePacket(data, _activeChar);
 					continue;
 				}
 
-				// TODO: 翻譯
-				// 以降、PacketHandlerの処理状況がClientThreadに影響を与えないようにする為の処理
-				// 目的はOpcodeの取捨選択とClientThreadとPacketHandlerの切り離し
+				// 從現在開始進行處理，防止PacketHandler的處理狀態影響ClientThread
+				// 目的是選擇Opcodes並分開ClientThread和PacketHandler
 
 				// 要處理的 OPCODE
 				// 切換角色、丟道具到地上、刪除身上道具
@@ -448,8 +445,9 @@ public class ClientThread implements Runnable, PacketOutput {
 					return;
 				}
 
-				if (_activeChar == null // 選角色之前
-						|| _activeChar != null && !_activeChar.isPrivateShop()) { // 正在個人商店
+				// 選角色之前 或 正在個人商店
+				if (_activeChar == null || _activeChar != null && !_activeChar.isPrivateShop()) 
+				{
 					kick();
 					_log.warning("一定時間沒有收到封包回應，所以強制切斷 (" + _hostname + ") 的連線。");
 					Account.online(getAccount(), false);

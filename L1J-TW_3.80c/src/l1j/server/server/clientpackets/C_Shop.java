@@ -14,7 +14,7 @@
  */
 package l1j.server.server.clientpackets;
 
-import java.io.UnsupportedEncodingException;
+// import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import l1j.server.server.ActionCodes;
@@ -26,7 +26,7 @@ import l1j.server.server.model.Instance.L1NpcInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.Instance.L1PetInstance;
 import l1j.server.server.model.identity.L1SystemMessageId;
-import l1j.server.server.serverpackets.S_ChangeShape;
+// import l1j.server.server.serverpackets.S_ChangeShape;
 import l1j.server.server.serverpackets.S_DoActionGFX;
 import l1j.server.server.serverpackets.S_DoActionShop;
 import l1j.server.server.serverpackets.S_ServerMessage;

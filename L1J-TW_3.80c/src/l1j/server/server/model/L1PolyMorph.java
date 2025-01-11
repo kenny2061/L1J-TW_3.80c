@@ -28,7 +28,7 @@ import l1j.server.server.serverpackets.S_ChangeShape;
 import l1j.server.server.serverpackets.S_CharVisualUpdate;
 import l1j.server.server.serverpackets.S_CloseList;
 import l1j.server.server.serverpackets.S_NpcChangeShape;
-import l1j.server.server.serverpackets.S_PacketBox;
+// import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_SkillIconGFX;
 import l1j.server.server.utils.collections.Maps;

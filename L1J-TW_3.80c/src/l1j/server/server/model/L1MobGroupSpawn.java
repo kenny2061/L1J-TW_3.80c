@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 import l1j.server.server.IdFactory;
 import l1j.server.server.datatables.MobGroupTable;
 import l1j.server.server.datatables.NpcTable;
-import l1j.server.server.model.L1MobGroupInfo;
+// import l1j.server.server.model.L1MobGroupInfo;
 import l1j.server.server.model.Instance.L1MonsterInstance;
 import l1j.server.server.model.Instance.L1NpcInstance;
 import l1j.server.server.templates.L1MobGroup;
