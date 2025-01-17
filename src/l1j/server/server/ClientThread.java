@@ -309,6 +309,7 @@ public class ClientThread implements Runnable, PacketOutput {
 			}
 		} catch (Throwable e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			_log.log(Level.SEVERE, e.getMessage(), e.fillInStackTrace());
 		} finally {
 			try {
 				if (_activeChar != null) {

@@ -89,7 +89,7 @@ public class Beginner {
 					pstm2.setInt(10, rs.getInt("charge_count"));
 					pstm2.setInt(11, 0);
 					pstm2.setTimestamp(12, null);
-					pstm2.setInt(13, 1);
+					pstm2.setInt(13, rs.getInt("bless"));
 					pstm2.execute();
 				} catch (SQLException e2) {
 					_log.log(Level.SEVERE, e2.getLocalizedMessage(), e2);

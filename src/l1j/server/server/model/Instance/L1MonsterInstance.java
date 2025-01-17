@@ -352,8 +352,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 	@Override
 	public void receiveDamage(L1Character attacker, int damage) { // 攻撃でＨＰを減らすときはここを使用
 		if ((getCurrentHp() > 0) && !isDead()) {
-			if ((getHiddenStatus() == HIDDEN_STATUS_SINK)
-					|| (getHiddenStatus() == HIDDEN_STATUS_FLY)) {
+			if ((getHiddenStatus() == HIDDEN_STATUS_SINK) || (getHiddenStatus() == HIDDEN_STATUS_FLY)) {
 				return;
 			}
 			if (damage >= 0) {
@@ -368,8 +367,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 			onNpcAI();
 
 			if (attacker instanceof L1PcInstance) { // 仲間意識をもつモンスターのターゲットに設定
-				serchLink((L1PcInstance) attacker, getNpcTemplate()
-						.get_family());
+				serchLink((L1PcInstance) attacker, getNpcTemplate().get_family());
 			}
 
 			// 血痕相剋傷害增加 1.5倍
